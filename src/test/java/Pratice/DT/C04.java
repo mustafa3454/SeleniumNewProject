@@ -1,0 +1,41 @@
+package Pratice.DT;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class C04 {
+    // "https://testpages.herokuapp.com/styled/calculator" adresine gidin
+    // ilk kutucuga 20 giriniz
+    // ikinci kutucuga 30 giriniz
+    // calculate'e tıklayınız
+    // sonucu yazdırınız
+    // sayfayi kapatiniz
+
+
+        public static void main(String[] args) {
+            // https://www.amazon.com/ adresine gidin
+            // Kaynak Kodlarini konsola yazdiriniz
+            // Kaynak Kodlarinda "Gateway" yazdigini test edin
+            // sayfayi kapatiniz
+            System.setProperty("webdriver.chrome.driver","src/resources/drivers/chromedriver.exe");
+            WebDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
+            driver.manage().window().maximize();
+            // https://www.amazon.com/ adresine gidin
+            driver.get("https://www.amazon.com/");
+            // Kaynak Kodlarini konsola yazdiriniz
+            String sayfaKaynakKodlari = driver.getPageSource();
+            System.out.println(sayfaKaynakKodlari);
+            // Kaynak Kodlarinda "Gateway" yazdigini test edin
+            if(sayfaKaynakKodlari.contains("Gateway")){
+                System.out.println("Kaynak Kodlarinda Gateway Yaziyor");
+            }else{
+                System.out.println("Kaynak Kodlarinda Gateway Yazmiyor");
+            }
+            // sayfayi kapatiniz
+            driver.close();
+        }
+    }
+
+
+
